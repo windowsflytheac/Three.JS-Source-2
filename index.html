@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Three.JS: Source 2</title>
-  <style>
-    body { margin: 0; overflow: hidden; background: black; color: #0f0; font-family: monospace; }
-    #console {
-      position: absolute;
-      bottom: 10px; left: 10px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 8px; border-radius: 6px;
-      font-size: 14px; color: #0f0;
-    }
-    #console input { background: transparent; border: none; color: #0f0; width: 300px; }
-  </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <script type="module" src="./main.js"></script>
+  <div id="loading">Loading map...</div>
   <div id="console">
-    <span>>> </span><input id="cmdInput" placeholder="Type /tp or commands here..." autofocus />
+    <input type="text" id="consoleInput" placeholder="Enter command...">
   </div>
+
+  <!-- Three.JS built-in global scripts -->
+  <script src="https://unpkg.com/three@0.160.0/build/three.js"></script>
+  <script src="https://unpkg.com/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+
+  <!-- Your engine scripts -->
+  <script src="./engine/portals.js"></script>
+  <script src="./engine/energyPellets.js"></script>
+  <script src="./engine/funnels.js"></script>
+  <script src="./engine/gels.js"></script>
+  <script src="./main.js"></script>
 </body>
 </html>
