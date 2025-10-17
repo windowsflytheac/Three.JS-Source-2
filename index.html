@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Three.JS: Source 2</title>
+  <style>
+    body { margin: 0; overflow: hidden; background: black; color: #0f0; font-family: monospace; }
+    #console {
+      position: absolute;
+      bottom: 10px; left: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 8px; border-radius: 6px;
+      font-size: 14px; color: #0f0;
+    }
+    #console input { background: transparent; border: none; color: #0f0; width: 300px; }
+  </style>
+</head>
+<body>
+  <script type="module" src="./main.js"></script>
+  <div id="console">
+    <span>>> </span><input id="cmdInput" placeholder="Type /tp or commands here..." autofocus />
+  </div>
+</body>
+</html>
