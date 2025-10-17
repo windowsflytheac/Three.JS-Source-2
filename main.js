@@ -1,29 +1,24 @@
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
-
-import { Portal } from './engine/portals.js';
-import { EnergyPellet } from './engine/energyPellets.js';
-import { Funnel } from './engine/funnels.js';
-import { Gel } from './engine/gels.js';
-
-// Scene setup
+// --- Scene setup ---
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
-camera.position.set(0,2,5);
+camera.position.set(0, 2, 5);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(innerWidth, innerHeight);
 document.body.appendChild(renderer.domElement);
 
-const controls = new OrbitControls(camera, renderer.domElement);
+// --- Built-in OrbitControls ---
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
 
-// Lighting
+// --- Lighting ---
 const light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(5, 10, 7);
 scene.add(light);
 scene.add(new THREE.AmbientLight(0x404040));
 
-// Loading map placeholder
+// --- Load your map placeholder ---
 const loading = document.getElementById('loading');
 loadMap2ID('./assets/maps/example.map2id', loading);
 
@@ -38,7 +33,7 @@ const funnel = new Funnel(scene, new THREE.Vector3(0,0,0));
 const propulsionGel = new Gel("propulsion");
 
 // --- Player movement ---
-const player = camera; // simple placeholder
+const player = camera;
 const velocity = new THREE.Vector3();
 
 document.addEventListener('keydown', (e) => {
@@ -78,7 +73,7 @@ function animate() {
 
     const delta = 0.016;
 
-    // Player movement
+    // Update player
     player.position.add(velocity);
 
     // Update mechanics
@@ -88,6 +83,7 @@ function animate() {
     funnel.apply(player, delta);
     propulsionGel.apply(player, delta);
 
+    controls.update();
     renderer.render(scene, camera);
 }
 animate();
