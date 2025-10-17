@@ -1,0 +1,6 @@
+MAP2ID
+version: 1
+skybox: default_sky
+ambient: 0.5
+entities:
+  - player_spawn: [0, 2, 5]
